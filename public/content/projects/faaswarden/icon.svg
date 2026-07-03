@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="FaaSWarden project mark">
+  <rect width="96" height="96" fill="#111618"/>
+  <path d="M48 12 76 24v20c0 18-11 32-28 40-17-8-28-22-28-40V24l28-12Z" fill="#1f3f3b" stroke="#71beb4" stroke-width="4"/>
+  <path d="M32 49h32M48 30v38" stroke="#eef7ff" stroke-width="6" stroke-linecap="round"/>
+</svg>

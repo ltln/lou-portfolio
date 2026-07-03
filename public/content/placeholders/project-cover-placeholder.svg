@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Project cover placeholder">
+  <rect width="1200" height="500" fill="#12181a"/>
+  <g opacity="0.28" stroke="#8aa19f" stroke-width="1">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M120 0v500M240 0v500M360 0v500M480 0v500M600 0v500M720 0v500M840 0v500M960 0v500M1080 0v500"/>
+  </g>
+  <g font-family="monospace" fill="#8aa19f">
+    <text x="64" y="86" font-size="24">/PROJECT/COVER</text>
+    <text x="64" y="430" font-size="18" opacity="0.72">STATIC PLACEHOLDER · ARCHITECTURE SLOT</text>
+  </g>
+</svg>

@@ -1,0 +1,99 @@
+{
+  "site": {
+    "name": "lou.moe",
+    "person": "Louis Nguyen",
+    "role": "Cloud · DevSecOps · Full-stack",
+    "tagline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "ONLINE",
+    "theme": "System Edition",
+    "footer": "Designed for technical writing, case studies, and quiet engineering notes."
+  },
+  "nav": {
+    "label": "Navigation",
+    "home": "Home",
+    "projects": "Projects",
+    "notes": "Notes",
+    "about": "About"
+  },
+  "elsewhere": {
+    "label": "Elsewhere",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "home": {
+    "path": "/home",
+    "eyebrow": "Personal engineering portfolio",
+    "title": "Lorem ipsum dolor sit amet.",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+    "selectedProjects": "Selected projects",
+    "recentNotes": "Recent notes",
+    "summary": "Current focus",
+    "roleLabel": "Role",
+    "focusLabel": "Focus",
+    "modeLabel": "Mode",
+    "summaryBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    "allProjects": "All projects",
+    "allNotes": "All notes"
+  },
+  "projects": {
+    "path": "/projects",
+    "title": "Projects",
+    "description": "Compact case studies across cloud engineering, DevSecOps, and product implementation.",
+    "empty": "No projects published yet.",
+    "read": "Read case study",
+    "role": "Role",
+    "stack": "Stack",
+    "focus": "Focus"
+  },
+  "notes": {
+    "path": "/notes",
+    "title": "Notes",
+    "description": "Technical notes, research logs, and implementation decisions.",
+    "empty": "No notes published yet.",
+    "read": "Read note",
+    "minutes": "min read"
+  },
+  "about": {
+    "path": "/about",
+    "title": "About",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "principles": "Working principles",
+    "principleOne": "Prefer boring infrastructure until the problem proves it needs more.",
+    "principleTwo": "Treat security, logging, and deployment as product behavior, not afterthoughts.",
+    "principleThree": "Write interfaces and docs that make operational state easy to inspect."
+  },
+  "meta": {
+    "published": "Published",
+    "tags": "Tags",
+    "language": "Language",
+    "fallback": "This page is shown in English because a localized version is not available yet.",
+    "notFound": "The requested page was not found.",
+    "localeSwitch": "Language"
+  },
+  "themeToggle": {
+    "label": "Theme",
+    "appearance": "Appearance",
+    "themes": "Themes",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "filters": {
+    "searchNotes": "Search notes...",
+    "searchProjects": "Search projects...",
+    "tags": "Tags",
+    "stack": "Stack",
+    "focus": "Focus",
+    "fromMonth": "From month",
+    "toMonth": "To month",
+    "fromYear": "From year",
+    "toYear": "To year",
+    "clear": "Clear filters",
+    "showing": "Showing {count} notes",
+    "showingProjects": "Showing {count} projects",
+    "noNotes": "No notes found",
+    "noProjects": "No projects found",
+    "tryFilters": "Try another title, tag, or date range."
+  }
+}

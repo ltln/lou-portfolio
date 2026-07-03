@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Abstract system topology diagram with connected nodes">
+  <rect width="1200" height="675" fill="#111618"/>
+  <g stroke="#5f8f8b" stroke-width="2" opacity="0.45">
+    <path d="M220 340h180l120-120h220l110 160h150" fill="none"/>
+    <path d="M400 340l160 120h250l85-80" fill="none"/>
+  </g>
+  <g fill="#eef7ff">
+    <circle cx="220" cy="340" r="16"/><circle cx="400" cy="340" r="12"/><circle cx="520" cy="220" r="18"/><circle cx="740" cy="220" r="14"/><circle cx="850" cy="380" r="18"/><circle cx="1000" cy="380" r="12"/><circle cx="560" cy="460" r="14"/><circle cx="810" cy="460" r="16"/>
+  </g>
+  <g font-family="monospace" font-size="22" fill="#8fd3ff" opacity="0.82">
+    <text x="72" y="86">/notes/designing-small-systems</text>
+    <text x="72" y="612">BOUNDARIES · SIGNALS · OPERATIONS</text>
+  </g>
+</svg>

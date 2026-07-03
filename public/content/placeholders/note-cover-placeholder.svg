@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Note cover placeholder">
+  <rect width="1200" height="500" fill="#151819"/>
+  <g fill="none" stroke="#8aa19f" stroke-width="2" opacity="0.38">
+    <path d="M180 170h300M180 235h500M180 300h420"/>
+    <path d="M840 150h120v120H840zM810 300h180"/>
+  </g>
+  <g font-family="monospace" fill="#8aa19f">
+    <text x="64" y="86" font-size="24">/NOTE/COVER</text>
+    <text x="64" y="430" font-size="18" opacity="0.72">STATIC PLACEHOLDER · JOURNAL BANNER</text>
+  </g>
+</svg>

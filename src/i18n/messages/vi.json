@@ -1,0 +1,99 @@
+{
+  "site": {
+    "name": "lou.moe",
+    "person": "Louis Nguyen",
+    "role": "Cloud · DevSecOps · Full-stack",
+    "tagline": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "status": "ONLINE",
+    "theme": "System Edition",
+    "footer": "Dành cho bài viết kỹ thuật, case study, và ghi chú engineering cô đọng."
+  },
+  "nav": {
+    "label": "Điều hướng",
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "notes": "Ghi chú",
+    "about": "Giới thiệu"
+  },
+  "elsewhere": {
+    "label": "Liên kết",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email"
+  },
+  "home": {
+    "path": "/home",
+    "eyebrow": "Portfolio kỹ thuật cá nhân",
+    "title": "Lorem ipsum dolor sit amet.",
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.",
+    "selectedProjects": "Dự án chọn lọc",
+    "recentNotes": "Ghi chú mới",
+    "summary": "Trọng tâm hiện tại",
+    "roleLabel": "Vai trò",
+    "focusLabel": "Trọng tâm",
+    "modeLabel": "Chế độ",
+    "summaryBody": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    "allProjects": "Tất cả dự án",
+    "allNotes": "Tất cả ghi chú"
+  },
+  "projects": {
+    "path": "/projects",
+    "title": "Dự án",
+    "description": "Case study cô đọng về cloud engineering, DevSecOps, và triển khai sản phẩm.",
+    "empty": "Chưa có dự án được xuất bản.",
+    "read": "Đọc case study",
+    "role": "Vai trò",
+    "stack": "Stack",
+    "focus": "Trọng tâm"
+  },
+  "notes": {
+    "path": "/notes",
+    "title": "Ghi chú",
+    "description": "Ghi chú kỹ thuật, nhật ký nghiên cứu, và quyết định triển khai.",
+    "empty": "Chưa có ghi chú được xuất bản.",
+    "read": "Đọc ghi chú",
+    "minutes": "phút đọc"
+  },
+  "about": {
+    "path": "/about",
+    "title": "Giới thiệu",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "principles": "Nguyên tắc làm việc",
+    "principleOne": "Ưu tiên hạ tầng đơn giản cho đến khi bài toán chứng minh cần nhiều hơn.",
+    "principleTwo": "Xem bảo mật, logging, và deployment là hành vi sản phẩm, không phải phần bổ sung.",
+    "principleThree": "Viết giao diện và tài liệu giúp trạng thái vận hành dễ kiểm tra."
+  },
+  "meta": {
+    "published": "Xuất bản",
+    "tags": "Thẻ",
+    "language": "Ngôn ngữ",
+    "fallback": "Trang này hiển thị bằng tiếng Anh vì chưa có bản dịch phù hợp.",
+    "notFound": "Không tìm thấy trang được yêu cầu.",
+    "localeSwitch": "Ngôn ngữ"
+  },
+  "themeToggle": {
+    "label": "Giao diện",
+    "appearance": "Chế độ",
+    "themes": "Chủ đề",
+    "system": "Hệ thống",
+    "light": "Sáng",
+    "dark": "Tối"
+  },
+  "filters": {
+    "searchNotes": "Tìm ghi chú...",
+    "searchProjects": "Tìm dự án...",
+    "tags": "Thẻ",
+    "stack": "Stack",
+    "focus": "Trọng tâm",
+    "fromMonth": "Từ tháng",
+    "toMonth": "Đến tháng",
+    "fromYear": "Từ năm",
+    "toYear": "Đến năm",
+    "clear": "Xóa bộ lọc",
+    "showing": "Đang hiển thị {count} ghi chú",
+    "showingProjects": "Đang hiển thị {count} dự án",
+    "noNotes": "Không tìm thấy ghi chú",
+    "noProjects": "Không tìm thấy dự án",
+    "tryFilters": "Thử tiêu đề, thẻ, hoặc khoảng thời gian khác."
+  }
+}
