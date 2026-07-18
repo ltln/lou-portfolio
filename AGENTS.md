@@ -1,4 +1,4 @@
-# AGENTS.md
+﻿# AGENTS.md
 
 ## Project Overview
 
@@ -81,13 +81,13 @@ particles enabled in theme.config.ts, add lightweight SVG/SMIL particles that vi
 match the configured preset; if the theme has no particles, do not add particles.
 
 After adding a new hero theme, update src/app/api/hero/route.ts so /api/hero?theme=<id>
-can return it when the theme is enabled. Validate the SVG as XML and run the narrowest
-relevant checks.
+can return it when the theme is enabled, and add/update the optional hero config on the
+theme definition. Validate the SVG as XML and run the narrowest relevant checks.
 ```
 
 - Existing examples: `public/hero/dark.svg`, `public/hero/moe.svg`, `public/hero/tet.svg`, `public/hero/winter.svg`.
 - Prefer `siteConfig.author` from `src/config/site.config.ts` over hardcoded banner text.
-- Keep hero theme ids aligned with `CustomThemeId` and `/api/hero` aliases.
+- Keep hero theme ids aligned with `CustomThemeId`, theme `hero.image`, and `/api/hero` aliases.
 
 ## Testing Expectations
 

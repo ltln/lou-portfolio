@@ -37,6 +37,15 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
         particles: { color: { value: ["#ab609b", "#c6a0ff"] }, opacity: { value: 0.18 } },
       },
     },
+    hero: {
+      image: "hero/moe.svg",
+      availability: {
+        type: "gregorian-range",
+        timezone: "Asia/Ho_Chi_Minh",
+        start: { month: 2, day: 14 },
+        end: { month: 2, day: 14 },
+      },
+    },
     atmosphereCss:
       "body::after{opacity:1;background:radial-gradient(circle at 84% 8%,rgb(255 143 199 / 0.16),transparent 32rem),radial-gradient(circle at 12% 88%,rgb(198 160 255 / 0.12),transparent 30rem);}",
     metadata: { sidebarStatus: "ONLINE", sidebarThemeLabel: "DOT.MOE" },
@@ -67,6 +76,7 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
       disableOnMobile: false,
       respectReducedMotion: true,
     },
+    hero: { image: "hero/tet.svg" },
     metadata: {
       sidebarStatus: "LUCKY DEPLOYMENT",
       sidebarThemeLabel: "TET BUILD",
@@ -104,6 +114,7 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
       disableOnMobile: false,
       respectReducedMotion: true,
     },
+    hero: { image: "hero/winter.svg" },
     metadata: {
       sidebarStatus: "ALL SYSTEMS COZY",
       sidebarThemeLabel: "WINTER DEPLOY",

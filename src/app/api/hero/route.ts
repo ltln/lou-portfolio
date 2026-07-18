@@ -3,19 +3,14 @@ import path from "node:path";
 import { NextResponse, type NextRequest } from "next/server";
 import { customThemeDefinitions } from "@/features/theme/theme.config";
 import { isAvailabilityActive } from "@/features/theme/theme.availability";
-import type { CustomThemeId } from "@/features/theme/theme.types";
+import type { CustomThemeDefinition, CustomThemeId } from "@/features/theme/theme.types";
 
 export const dynamic = "force-dynamic";
 
 type HeroTheme = "dark" | CustomThemeId;
 
 const defaultTheme: HeroTheme = "dark";
-const heroFiles: Record<HeroTheme, string> = {
-  dark: "hero/dark.svg",
-  dotmoe: "hero/moe.svg",
-  tet: "hero/tet.svg",
-  winter: "hero/winter.svg",
-};
+const defaultHeroImage = "hero/dark.svg";
 const queryThemeAliases: Record<string, HeroTheme> = {
   dark: "dark",
   moe: "dotmoe",
@@ -27,7 +22,7 @@ const queryThemeAliases: Record<string, HeroTheme> = {
 
 export async function GET(request: NextRequest) {
   const theme = resolveHeroTheme(request.nextUrl.searchParams.get("theme"));
-  const svg = await fs.readFile(path.join(process.cwd(), "public", heroFiles[theme]), "utf8");
+  const svg = await fs.readFile(path.join(process.cwd(), "public", heroImageFor(theme)), "utf8");
 
   return new NextResponse(svg, {
     headers: {
@@ -42,12 +37,7 @@ function resolveHeroTheme(queryTheme: string | null): HeroTheme {
   const requested = normalizeQueryTheme(queryTheme);
   if (requested && isHeroThemeEnabled(requested)) return requested;
 
-  const activeTheme = customThemeDefinitions.find(
-    (theme) =>
-      theme.enabled &&
-      theme.availability.type !== "always" &&
-      isAvailabilityActive(theme.availability),
-  );
+  const activeTheme = customThemeDefinitions.find((theme) => theme.enabled && isHeroActive(theme));
 
   return activeTheme?.id ?? defaultTheme;
 }
@@ -59,7 +49,23 @@ function normalizeQueryTheme(theme: string | null): HeroTheme | null {
 
 function isHeroThemeEnabled(theme: HeroTheme) {
   if (theme === "dark") return true;
-  return customThemeDefinitions.some((definition) => definition.id === theme && definition.enabled);
+  return Boolean(themeDefinition(theme)?.enabled && themeDefinition(theme)?.hero?.image);
+}
+
+function isHeroActive(theme: CustomThemeDefinition) {
+  if (!theme.hero?.image) return false;
+  const availability = theme.hero.availability ?? theme.availability;
+  if (availability.type === "always") return false;
+  return isAvailabilityActive(availability);
+}
+
+function heroImageFor(theme: HeroTheme) {
+  if (theme === "dark") return defaultHeroImage;
+  return themeDefinition(theme)?.hero?.image ?? defaultHeroImage;
+}
+
+function themeDefinition(theme: CustomThemeId) {
+  return customThemeDefinitions.find((definition) => definition.id === theme);
 }
 
 function cacheControlHeader() {

@@ -31,6 +31,11 @@ export interface ThemeParticleConfig {
   options?: ISourceOptions;
 }
 
+export interface ThemeHeroConfig {
+  image: string;
+  availability?: ThemeAvailability;
+}
+
 export interface ThemeTokens {
   background: string;
   foreground: string;
@@ -54,6 +59,7 @@ export interface CustomThemeDefinition {
   tokens: ThemeTokens;
   decoration?: ThemeDecorationConfig;
   particles?: ThemeParticleConfig;
+  hero?: ThemeHeroConfig;
   atmosphereCss?: string;
   metadata?: {
     sidebarStatus?: string;
