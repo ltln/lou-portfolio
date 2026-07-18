@@ -75,6 +75,9 @@
     "label": "Theme",
     "appearance": "Appearance",
     "themes": "Themes",
+    "effects": "Effects",
+    "particles": "Particles",
+    "particlesDescription": "Toggle seasonal particle effects.",
     "system": "System",
     "light": "Light",
     "dark": "Dark"

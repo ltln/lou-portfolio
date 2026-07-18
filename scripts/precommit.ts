@@ -6,6 +6,7 @@ interface Check {
 }
 
 const checks: Check[] = [
+  { name: "content", args: ["run", "content:check"] },
   { name: "format", args: ["run", "format"] },
   { name: "lint", args: ["run", "lint"] },
   { name: "typecheck", args: ["run", "typecheck"] },

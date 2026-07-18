@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/request";
 import { getNote, getNoteStaticParams } from "@/features/notes/notes.service";
-import { mdxComponents } from "@/components/mdx/MdxComponents";
+import { createMdxComponents } from "@/components/mdx/MdxComponents";
+import { mdxOptions } from "@/components/mdx/mdxOptions";
 import { MdxFallbackNotice } from "@/components/mdx/MdxFallbackNotice";
+import { SafeMdxRemote } from "@/components/mdx/SafeMdxRemote";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { getAlternateSlug } from "@/content/mdx/loader";
 import { NoteMeta } from "@/features/notes/components/NoteMeta";
 import { ContentCoverImage } from "@/components/content/ContentCoverImage";
 import { ArticleProse } from "@/components/content/ArticleProse";
+import { TagList } from "@/components/ui/TagList";
 
 export function generateStaticParams() {
   return getNoteStaticParams();
@@ -56,6 +58,9 @@ export default async function NoteDetail({
           <NoteMeta note={note} messages={messages} />
         </div>
         <div className="mt-5">
+          <TagList tags={note.frontmatter.tags} />
+        </div>
+        <div className="mt-5">
           <LocaleSwitcher locale={locale} messages={messages} links={localeLinks} />
         </div>
         <ContentCoverImage
@@ -67,7 +72,11 @@ export default async function NoteDetail({
         />
       </header>
       <ArticleProse className="mt-10">
-        <MDXRemote source={note.body} components={mdxComponents} />
+        <SafeMdxRemote
+          source={note.body}
+          components={createMdxComponents(locale)}
+          options={mdxOptions}
+        />
       </ArticleProse>
     </article>
   );

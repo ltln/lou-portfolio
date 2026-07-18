@@ -8,12 +8,18 @@ export function ThemeMenu({
   messages,
   active,
   onSelect,
+  particlesAvailable,
+  particlesEnabled,
+  onToggleParticles,
   placement = "above",
   customThemes,
 }: {
   messages: Messages;
   active: UserThemeSelection;
   onSelect: (selection: UserThemeSelection) => void;
+  particlesAvailable: boolean;
+  particlesEnabled: boolean;
+  onToggleParticles: () => void;
   placement?: "above" | "below";
   customThemes: CustomThemeDefinition[];
 }) {
@@ -48,6 +54,16 @@ export function ThemeMenu({
           ))}
         </ThemeGroup>
       ) : null}
+      {particlesAvailable ? (
+        <ThemeGroup label={messages.themeToggle.effects}>
+          <ThemeToggleOption
+            active={particlesEnabled}
+            label={messages.themeToggle.particles}
+            description={messages.themeToggle.particlesDescription}
+            onToggle={onToggleParticles}
+          />
+        </ThemeGroup>
+      ) : null}
     </div>
   );
 }
@@ -78,10 +94,42 @@ function ThemeOption({
       role="menuitemradio"
       aria-checked={active}
       onClick={onSelect}
-      className="grid w-full grid-cols-[16px_1fr] gap-2 border border-transparent px-2 py-2 text-left hover:border-border hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+      className="grid w-full grid-cols-[28px_1fr] gap-2 border border-transparent px-2 py-2 text-left hover:border-border hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
     >
-      <span className="font-mono text-xs text-accent" aria-hidden="true">
+      <span className="w-7 font-mono text-xs text-accent" aria-hidden="true">
         {active ? "●" : "○"}
+      </span>
+      <span>
+        <span className="block font-mono text-[11px] uppercase text-foreground/78">{label}</span>
+        {description ? (
+          <span className="mt-1 block text-xs leading-4 text-foreground/52">{description}</span>
+        ) : null}
+      </span>
+    </button>
+  );
+}
+
+function ThemeToggleOption({
+  active,
+  label,
+  description,
+  onToggle,
+}: {
+  active: boolean;
+  label: string;
+  description?: string;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      role="menuitemcheckbox"
+      aria-checked={active}
+      onClick={onToggle}
+      className="grid w-full grid-cols-[28px_1fr] gap-2 border border-transparent px-2 py-2 text-left hover:border-border hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+    >
+      <span className="w-7 font-mono text-xs text-accent" aria-hidden="true">
+        {active ? "[x]" : "[ ]"}
       </span>
       <span>
         <span className="block font-mono text-[11px] uppercase text-foreground/78">{label}</span>

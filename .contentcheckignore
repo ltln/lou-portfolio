@@ -1,0 +1,5 @@
+# Content checker ignore patterns.
+# Supports comments, blank lines, *, **, ?, trailing / directories, leading / root anchors, and ! negation.
+
+# Intentional invalid fixture for validating checker output.
+content/notes/markdown_checker_error_benchmark*.mdx

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ContentEntry } from "@/content/mdx/loader";
 import { ContentCoverImage } from "@/components/content/ContentCoverImage";
 import { EmptyState } from "@/components/ui/EmptyState";
+import { TagList } from "@/components/ui/TagList";
 import { titleOrFallback } from "@/features/content-title/title-safeguards";
 import type { Locale } from "@/i18n/config";
 import { localizedDetail } from "@/i18n/navigation";
@@ -54,6 +55,9 @@ export function NoteList({
               <p className="mt-4 text-sm leading-6 text-foreground/68">
                 {note.frontmatter.description}
               </p>
+              <div className="mt-4">
+                <TagList tags={note.frontmatter.tags} />
+              </div>
               <Link
                 href={localizedDetail(locale, "notes", note.canonicalSlug)}
                 className="mt-5 inline-block font-mono text-xs uppercase text-accent hover:underline"

@@ -20,6 +20,56 @@ export interface ContentEntry {
 
 const root = path.join(process.cwd(), "content");
 const filenamePattern = /^(\d{4}-\d{2}-\d{2})_(.+)\.(en|vi)\.mdx$/;
+const warnedInvalidFiles = new Set<string>();
+const htmlTagAllowlist = new Set([
+  "a",
+  "abbr",
+  "aside",
+  "audio",
+  "br",
+  "button",
+  "code",
+  "dd",
+  "details",
+  "div",
+  "dl",
+  "dt",
+  "figcaption",
+  "figure",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "iframe",
+  "img",
+  "input",
+  "kbd",
+  "label",
+  "li",
+  "mark",
+  "meter",
+  "ol",
+  "option",
+  "p",
+  "progress",
+  "samp",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strong",
+  "sub",
+  "summary",
+  "sup",
+  "textarea",
+  "ul",
+  "var",
+  "video",
+]);
 
 function dirFor(kind: ContentKind) {
   return path.join(root, kind);
@@ -31,9 +81,30 @@ export function getAllEntries(kind: ContentKind): ContentEntry[] {
   return fs
     .readdirSync(dir)
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => readFile(kind, file))
-    .filter((entry) => entry.frontmatter.published)
+    .flatMap((file) => {
+      const entry = readFileSafe(kind, file);
+      return entry?.frontmatter.published ? [entry] : [];
+    })
     .sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
+}
+
+function readFileSafe(kind: ContentKind, file: string): ContentEntry | null {
+  try {
+    return readFile(kind, file);
+  } catch (error) {
+    warnInvalidFile(`${kind}/${file}`, error);
+    return null;
+  }
+}
+
+function warnInvalidFile(key: string, error: unknown) {
+  if (warnedInvalidFiles.has(key)) return;
+  warnedInvalidFiles.add(key);
+  console.warn(`Skipping invalid content file: ${key} (${messageFromError(error)})`);
+}
+
+function messageFromError(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }
 
 function readFile(kind: ContentKind, file: string): ContentEntry {
@@ -42,6 +113,7 @@ function readFile(kind: ContentKind, file: string): ContentEntry {
   const [, , slug, locale] = match;
   const raw = fs.readFileSync(path.join(dirFor(kind), file), "utf8");
   const parsed = matter(raw);
+  const body = normalizeMdxSource(parsed.content);
   const frontmatter = frontmatterSchema.parse(parsed.data);
   const canonicalSlug = frontmatter.translationOf ?? slug;
   return {
@@ -51,9 +123,42 @@ function readFile(kind: ContentKind, file: string): ContentEntry {
     locale: locale as Locale,
     fallback: false,
     frontmatter,
-    body: parsed.content,
-    readingMinutes: Math.max(1, Math.ceil(readingTime(parsed.content).minutes)),
+    body,
+    readingMinutes: Math.max(1, Math.ceil(readingTime(body).minutes)),
   };
+}
+
+export function normalizeMdxSource(source: string) {
+  const lines = source.split(/\r?\n/);
+  let inFence = false;
+  return lines
+    .flatMap((line) => {
+      if (/^\s*```/.test(line)) {
+        inFence = !inFence;
+        return line;
+      }
+      if (inFence) return line;
+      if (/^\s*import\s.+from\s+["'].+["'];?\s*$/.test(line)) return [];
+
+      const sanitized = sanitizeMdxHtmlLine(line);
+      const escaped = sanitized.replace(/<\/?([a-z][\w-]*)(\s[^<>]*)?>/g, (match, tag: string) => {
+        return htmlTagAllowlist.has(tag)
+          ? match
+          : match.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+      });
+
+      const multilineClose = escaped.match(/^(.*\S)\s+(<\/[A-Z][A-Za-z0-9_]*>)\s*$/);
+      return multilineClose ? [multilineClose[1], multilineClose[2]] : escaped;
+    })
+    .join("\n");
+}
+
+function sanitizeMdxHtmlLine(line: string) {
+  return line
+    .replace(/\s+on[a-z]+\s*=\s*("[^"]*"|'[^']*'|\{[^}]*\}|[^\s>]+)/gi, "")
+    .replace(/\s+style\s*=\s*("[^"]*"|'[^']*'|\{[^}]*\}|[^\s>]+)/gi, "")
+    .replace(/\s+(href|src)\s*=\s*(["'])\s*javascript:[^"']*\2/gi, "")
+    .replace(/\s+(href|src)\s*=\s*\{\s*[`'"]\s*javascript:[^}]*\}/gi, "");
 }
 
 export function getLocalizedEntries(kind: ContentKind, locale: Locale) {

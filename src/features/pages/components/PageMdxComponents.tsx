@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { WideContent } from "@/components/content/WideContent";
-import { mdxComponents } from "@/components/mdx/MdxComponents";
+import { createMdxComponents } from "@/components/mdx/MdxComponents";
 import { SelectedProjects } from "@/features/projects/components/SelectedProjects";
 import { RecentNotes } from "@/features/home/components/RecentNotes";
 import { ProfileSummary } from "@/features/home/components/ProfileSummary";
@@ -13,7 +13,7 @@ export function pageMdxComponents(
   routeLabel: string,
 ): MDXComponents {
   return {
-    ...mdxComponents,
+    ...createMdxComponents(locale),
     h1: ({ children }) => (
       <header className="mb-8 border-b border-border pb-8">
         <p className="font-mono text-xs uppercase text-accent">{routeLabel}</p>

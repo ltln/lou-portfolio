@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { Messages } from "@/i18n/request";
-import { labelForTheme } from "../theme.utils";
+import { isBaseThemeMode, labelForTheme } from "../theme.utils";
 import { useThemeMode } from "../theme.provider";
 import { ThemeMenu } from "./ThemeMenu";
 
@@ -15,9 +15,13 @@ export function ThemeSelector({
   placement?: "above" | "below";
   compact?: boolean;
 }) {
-  const { selection, setSelection, availableThemes } = useThemeMode();
+  const { selection, setSelection, particlesEnabled, setParticlesEnabled, availableThemes } =
+    useThemeMode();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const particlesAvailable =
+    !isBaseThemeMode(selection) &&
+    availableThemes.some((theme) => theme.id === selection && theme.particles?.enabled);
 
   useEffect(() => {
     if (!open) return;
@@ -60,6 +64,9 @@ export function ThemeSelector({
             active={selection}
             placement={placement}
             customThemes={availableThemes}
+            particlesAvailable={particlesAvailable}
+            particlesEnabled={particlesEnabled}
+            onToggleParticles={() => setParticlesEnabled(!particlesEnabled)}
             onSelect={(nextSelection) => {
               setSelection(nextSelection);
               setOpen(false);

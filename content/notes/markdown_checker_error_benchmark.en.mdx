@@ -1,0 +1,232 @@
+---
+title: Markdown Checker Error Benchmark
+version: 1
+tags: [markdown, benchmark
+owner: parser-team
+---
+
+<!--
+BENCHMARK PURPOSE
+This file intentionally contains malformed or suspicious Markdown.
+A checker may classify findings as ERROR, WARNING, or INFO.
+
+Suggested result format:
+- issue code
+- severity
+- line number
+- message
+
+Some CommonMark parsers are permissive, so not every case will cause a parse failure.
+The goal is to test syntax checks, linting, safety checks, and content validation.
+-->
+
+# Markdown Checker Error Benchmark
+
+<!-- EXPECT: MD001 heading-level-jump -->
+
+### Heading level jumps from H1 to H3
+
+<!-- EXPECT: MD018 no-space-after-hash -->
+
+##Missing space after heading marker
+
+<!-- EXPECT: MD025 multiple-h1 -->
+
+# Second top-level heading
+
+<!-- EXPECT: MD024 duplicate-heading -->
+
+## Duplicate heading
+
+<!-- EXPECT: MD024 duplicate-heading -->
+
+## Duplicate heading
+
+<!-- EXPECT: EMPTY_HEADING -->
+
+##
+
+<!-- EXPECT: UNCLOSED_EMPHASIS -->
+
+This sentence begins \*\*bold text but never closes.
+
+<!-- EXPECT: UNCLOSED_EMPHASIS -->
+
+This sentence begins \*italic text but never closes.
+
+<!-- EXPECT: UNCLOSED_STRIKETHROUGH -->
+
+This sentence begins ~~strikethrough but never closes.
+
+<!-- EXPECT: MISORDERED_EMPHASIS -->
+
+This has **bold and \*italic** markers in the wrong order\*.
+
+<!-- EXPECT: BROKEN_INLINE_CODE -->
+
+This has an `unclosed inline code span.
+
+<!-- EXPECT: BROKEN_LINK_DESTINATION -->
+
+[Broken link](https://example.com
+
+<!-- EXPECT: EMPTY_LINK_TEXT -->
+
+[](https://example.com)
+
+<!-- EXPECT: EMPTY_LINK_DESTINATION -->
+
+[Empty destination]()
+
+<!-- EXPECT: UNSAFE_URL_SCHEME -->
+
+[Unsafe JavaScript URL](<javascript:alert('xss')>)
+
+<!-- EXPECT: UNRESOLVED_REFERENCE -->
+
+[Missing reference][does-not-exist]
+
+<!-- EXPECT: DUPLICATE_REFERENCE_DEFINITION -->
+
+[duplicate-ref]: https://example.com/first
+[duplicate-ref]: https://example.com/second
+
+<!-- EXPECT: MALFORMED_AUTOLINK -->
+
+<https://example.com
+
+<!-- EXPECT: NESTED_LINK -->
+
+[Outer link with [inner link](https://inner.example)](https://outer.example)
+
+<!-- EXPECT: IMAGE_MISSING_ALT_TEXT -->
+
+![](image.png)
+
+<!-- EXPECT: BROKEN_IMAGE_TITLE -->
+
+![Broken image](image.png "missing closing parenthesis"
+
+<!-- EXPECT: IMAGE_MISSING_DESTINATION -->
+
+![No destination]()
+
+<!-- EXPECT: UNCLOSED_FENCED_CODE_BLOCK -->
+
+```python
+def broken():
+    print("This code fence is never closed")
+
+<!-- EXPECT: FENCE_MARKER_MISMATCH -->
+~~~javascript
+console.log("Opened with tildes, closed with backticks");
+```
+
+<!-- EXPECT: INVALID_TASK_LIST_ITEM -->
+
+- [x Missing closing bracket
+- [ ] Valid task for comparison
+
+<!-- EXPECT: INCONSISTENT_LIST_INDENTATION -->
+
+- Parent item
+  - Three-space child
+    - Six-space grandchild
+  - Two-space sibling
+
+<!-- EXPECT: ORDERED_LIST_SEQUENCE -->
+
+1. First
+2. Third
+3. Second
+
+## <!-- EXPECT: EMPTY_LIST_ITEM -->
+
+<!-- EXPECT: TAB_INDENTATION -->
+
+    - List item indented with a tab
+
+<!-- EXPECT: BLOCKQUOTE_MISSING_SPACE -->
+
+> No space after blockquote marker
+
+<!-- EXPECT: MALFORMED_TABLE -->
+
+| Name         | Status |
+| ------------ | :----: | ---------- |
+| Parser       | Broken | Extra cell |
+| Missing cell |
+
+<!-- EXPECT: INVALID_TABLE_DELIMITER -->
+
+| A | B |
+| -- | :x: |
+| 1 | 2 |
+
+<!-- EXPECT: RAW_HTML_UNCLOSED_TAG -->
+
+<div>
+Unclosed HTML block
+
+<!-- EXPECT: RAW_HTML_MISMATCHED_TAG -->
+
+<span>Mismatched HTML closing tag</div>
+
+<!-- EXPECT: UNSAFE_HTML -->
+
+<script>alert("unsafe")</script>
+
+<!-- EXPECT: INVALID_ENTITY -->
+
+Invalid HTML entity: &notarealentity;
+
+<!-- EXPECT: BARE_URL -->
+
+Visit https://example.com/path?query=1 without Markdown link syntax.
+
+<!-- EXPECT: TRAILING_WHITESPACE -->
+
+This line intentionally ends with trailing spaces.
+
+<!-- EXPECT: HARD_TAB -->
+
+This line contains tab characters.
+
+<!-- EXPECT: LONG_LINE -->
+
+This is an intentionally overlong line designed to trigger line-length validation in Markdown linters and content checkers that enforce a maximum width such as eighty, one hundred, or one hundred and twenty characters.
+
+<!-- EXPECT: TODO_MARKER -->
+
+TODO: Replace this placeholder with final content.
+
+<!-- EXPECT: PLACEHOLDER_TEXT -->
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+<!-- EXPECT: BROKEN_SETEXT_HEADING -->
+
+Setext heading with invalid underline
+===x===
+
+<!-- EXPECT: HORIZONTAL_RULE_AMBIGUITY -->
+
+---
+
+<!-- EXPECT: ESCAPED_CHARACTER_MISUSE -->
+
+This contains a suspicious escape: \q and another one: \z.
+
+<!-- EXPECT: DUPLICATE_ANCHOR_RISK -->
+
+## API Reference
+
+<!-- EXPECT: DUPLICATE_ANCHOR_RISK -->
+
+## API Reference
+
+<!-- EXPECT: EMPTY_PARAGRAPH_OR_EXCESS_BLANK_LINES -->
+
+<!-- EXPECT: FINAL_SUMMARY_SENTINEL -->
+
+End of intentional benchmark cases.

@@ -27,7 +27,7 @@ export interface ThemeParticleConfig {
   enabled: boolean;
   disableOnMobile?: boolean;
   respectReducedMotion: boolean;
-  preset?: "none" | "snow" | "fireflies" | "blossoms" | "dots";
+  preset?: "none" | "snow" | "fireflies" | "blossoms" | "apricot-blossoms" | "hearts" | "dots";
   options?: ISourceOptions;
 }
 

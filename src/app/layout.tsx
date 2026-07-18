@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "katex/dist/katex.min.css";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/features/theme/theme.provider";
 import { ThemeDecoration } from "@/features/theme/decorations/ThemeDecoration";

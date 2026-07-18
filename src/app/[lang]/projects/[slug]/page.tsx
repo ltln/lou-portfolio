@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/request";
 import { getProject, getProjectStaticParams } from "@/features/projects/projects.service";
-import { mdxComponents } from "@/components/mdx/MdxComponents";
+import { createMdxComponents } from "@/components/mdx/MdxComponents";
+import { mdxOptions } from "@/components/mdx/mdxOptions";
 import { MdxFallbackNotice } from "@/components/mdx/MdxFallbackNotice";
+import { SafeMdxRemote } from "@/components/mdx/SafeMdxRemote";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { getAlternateSlug } from "@/content/mdx/loader";
 import { TagList } from "@/components/ui/TagList";
@@ -84,7 +85,11 @@ export default async function ProjectDetail({
         />
       </dl>
       <ArticleProse className="mt-10">
-        <MDXRemote source={project.body} components={mdxComponents} />
+        <SafeMdxRemote
+          source={project.body}
+          components={createMdxComponents(locale)}
+          options={mdxOptions}
+        />
       </ArticleProse>
     </article>
   );

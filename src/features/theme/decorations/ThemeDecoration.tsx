@@ -11,8 +11,8 @@ const ParticleCanvas = dynamic(() => import("./ParticleCanvas"), {
 });
 
 export function ThemeDecoration() {
-  const { selection } = useThemeMode();
-  const config = getParticleConfig(selection, particlesEnabled);
+  const { selection, particlesEnabled: userParticlesEnabled } = useThemeMode();
+  const config = getParticleConfig(selection, particlesEnabled && userParticlesEnabled);
   if (!config.enabled) return null;
   return <ParticleCanvas config={config} />;
 }

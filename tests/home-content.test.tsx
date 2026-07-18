@@ -42,17 +42,19 @@ describe("placeholder content rendering", () => {
     expect(html).toContain("whitespace-nowrap");
   });
 
-  test("only one note is published and renders without cover", () => {
+  test("lorem note is published and renders without cover", () => {
     const notes = getNotes("en");
-    expect(notes).toHaveLength(1);
-    expect(notes[0].frontmatter.title).toBe("Lorem ipsum note");
-    expect(notes[0].frontmatter.cover).toBeUndefined();
+    const note = notes.find((entry) => entry.canonicalSlug === "lorem-note");
+    expect(note?.frontmatter.title).toBe("Lorem ipsum note");
+    expect(note?.frontmatter.cover).toBeUndefined();
     const html = renderToStaticMarkup(<NoteList notes={notes} locale="en" messages={messages} />);
     expect(html).toContain("Lorem ipsum note");
   });
 
   test("Vietnamese content falls back to the lorem English project and note", () => {
-    expect(getNotes("vi")[0].frontmatter.title).toBe("Lorem ipsum note");
+    expect(
+      getNotes("vi").find((entry) => entry.canonicalSlug === "lorem-note")?.frontmatter.title,
+    ).toBe("Lorem ipsum note");
     expect(getFeaturedProjects("vi")[0].frontmatter.title).toBe("Lorem ipsum project");
   });
 });

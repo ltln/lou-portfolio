@@ -2,6 +2,7 @@ import { activeTheme, enabledCustomThemes } from "./theme.config";
 import type { CustomThemeId, UserThemeSelection } from "./theme.types";
 
 export const themeStorageKey = "lou-theme-mode";
+export const themeParticlesStorageKey = "lou-theme-particles";
 export const baseThemeSelections = ["system", "light", "dark"] as const;
 export const customThemeSelections = enabledCustomThemes.map(
   (theme) => theme.id,
@@ -23,4 +24,13 @@ export function getStoredTheme(): UserThemeSelection {
 
 export function storeTheme(selection: UserThemeSelection) {
   window.localStorage.setItem(themeStorageKey, selection);
+}
+
+export function getStoredParticlesEnabled() {
+  if (typeof window === "undefined") return true;
+  return window.localStorage.getItem(themeParticlesStorageKey) !== "false";
+}
+
+export function storeParticlesEnabled(enabled: boolean) {
+  window.localStorage.setItem(themeParticlesStorageKey, String(enabled));
 }

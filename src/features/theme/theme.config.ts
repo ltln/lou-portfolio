@@ -30,8 +30,8 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
     decoration: { enabled: true, type: "dots", intensity: "low" },
     particles: {
       enabled: true,
-      preset: "dots",
-      disableOnMobile: true,
+      preset: "hearts",
+      disableOnMobile: false,
       respectReducedMotion: true,
       options: {
         particles: { color: { value: ["#ab609b", "#c6a0ff"] }, opacity: { value: 0.18 } },
@@ -63,8 +63,8 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
     decoration: { enabled: true, type: "blossoms", intensity: "low" },
     particles: {
       enabled: true,
-      preset: "blossoms",
-      disableOnMobile: true,
+      preset: "apricot-blossoms",
+      disableOnMobile: false,
       respectReducedMotion: true,
     },
     metadata: {
@@ -101,7 +101,7 @@ export const customThemeDefinitions: CustomThemeDefinition[] = [
     particles: {
       enabled: true,
       preset: "snow",
-      disableOnMobile: true,
+      disableOnMobile: false,
       respectReducedMotion: true,
     },
     metadata: {

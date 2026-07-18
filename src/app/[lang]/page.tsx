@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { ArticleProse } from "@/components/content/ArticleProse";
 import { MdxFallbackNotice } from "@/components/mdx/MdxFallbackNotice";
+import { SafeMdxRemote } from "@/components/mdx/SafeMdxRemote";
+import { mdxOptions } from "@/components/mdx/mdxOptions";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/request";
 import { pageMdxComponents } from "@/features/pages/components/PageMdxComponents";
@@ -30,9 +31,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     <article>
       {page.fallback ? <MdxFallbackNotice messages={messages} /> : null}
       <ArticleProse>
-        <MDXRemote
+        <SafeMdxRemote
           source={page.body}
           components={pageMdxComponents(locale, messages, messages.home.path.toUpperCase())}
+          options={mdxOptions}
         />
       </ArticleProse>
     </article>

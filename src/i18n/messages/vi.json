@@ -75,6 +75,9 @@
     "label": "Giao diện",
     "appearance": "Chế độ",
     "themes": "Chủ đề",
+    "effects": "Hiệu ứng",
+    "particles": "Hạt",
+    "particlesDescription": "Bật tắt hiệu ứng hạt theo mùa.",
     "system": "Hệ thống",
     "light": "Sáng",
     "dark": "Tối"

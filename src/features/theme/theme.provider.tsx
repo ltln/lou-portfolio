@@ -7,13 +7,20 @@ import {
   isThemeAvailable,
   serverSafeAvailableCustomThemes,
 } from "./theme.availability";
-import { getStoredTheme, storeTheme } from "./theme.storage";
+import {
+  getStoredParticlesEnabled,
+  getStoredTheme,
+  storeParticlesEnabled,
+  storeTheme,
+} from "./theme.storage";
 import type { CustomThemeDefinition, UserThemeSelection } from "./theme.types";
 import { isBaseThemeMode, resolveThemeSelection } from "./theme.utils";
 
 interface ThemeContextValue {
   selection: UserThemeSelection;
   setSelection: (selection: UserThemeSelection) => void;
+  particlesEnabled: boolean;
+  setParticlesEnabled: (enabled: boolean) => void;
   availableThemes: CustomThemeDefinition[];
 }
 
@@ -21,6 +28,7 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [selection, setSelection] = useState<UserThemeSelection>(activeTheme.defaultSelection);
+  const [particlesEnabled, setParticlesEnabled] = useState(true);
   const [availableThemes, setAvailableThemes] = useState<CustomThemeDefinition[]>(() =>
     serverSafeAvailableCustomThemes(),
   );
@@ -31,6 +39,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const themes = availableCustomThemes();
     setAvailableThemes(themes);
     const stored = getStoredTheme();
+    setParticlesEnabled(getStoredParticlesEnabled());
     window.localStorage.removeItem("lou-sidebar-collapsed");
     const next =
       !isBaseThemeMode(stored) && !isThemeAvailable(stored) ? activeTheme.defaultSelection : stored;
@@ -55,8 +64,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     appliedOnce.current = true;
   }, [hydrated, selection]);
 
+  useEffect(() => {
+    if (!hydrated) return;
+    storeParticlesEnabled(particlesEnabled);
+  }, [hydrated, particlesEnabled]);
+
   return (
-    <ThemeContext.Provider value={{ selection, setSelection, availableThemes }}>
+    <ThemeContext.Provider
+      value={{ selection, setSelection, particlesEnabled, setParticlesEnabled, availableThemes }}
+    >
       {children}
     </ThemeContext.Provider>
   );
