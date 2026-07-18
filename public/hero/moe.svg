@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">LOUIS NGUYEN dot.moe theme banner</title>
+  <desc id="desc">A 1280 by 640 dot.moe theme background with looping heart particles and centered LOUIS NGUYEN text.</desc>
+
+  <defs>
+    <clipPath id="canvasClip"><rect width="1280" height="640" rx="36" ry="36" /></clipPath>
+    <radialGradient id="pinkGlow" cx="84%" cy="8%" r="62%"><stop offset="0" stop-color="rgb(255,143,199)" stop-opacity="0.16" /><stop offset="1" stop-color="rgb(247,247,244)" stop-opacity="0" /></radialGradient>
+    <radialGradient id="violetGlow" cx="12%" cy="88%" r="58%"><stop offset="0" stop-color="rgb(198,160,255)" stop-opacity="0.12" /><stop offset="1" stop-color="rgb(247,247,244)" stop-opacity="0" /></radialGradient>
+    <pattern id="dottedBackground" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgb(25,29,31)" fill-opacity="0.18" /></pattern>
+    <filter id="softTextGlow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" /><feFlood flood-color="rgb(171,96,155)" flood-opacity="0.24" /><feComposite in2="blur" operator="in" result="glow" /><feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    <style>
+      .particle { font-family: Consolas, monospace; dominant-baseline: middle; text-anchor: middle; opacity: var(--o); fill: var(--c); }
+      .name { font-family: Consolas, monospace; font-size: 76px; font-weight: 700; letter-spacing: 8px; fill: rgb(25,29,31); dominant-baseline: middle; text-anchor: middle; }
+      .name-wrap { animation: glowPulse 3.6s ease-in-out infinite; transform-origin: 640px 315px; }
+      .subtitle { font-family: Consolas, monospace; font-size: 14px; letter-spacing: 5px; fill: rgb(171,96,155); fill-opacity: 0.78; dominant-baseline: middle; text-anchor: middle; }
+      @keyframes glowPulse { 0%, 100% { opacity: 0.88; filter: url(#softTextGlow); } 50% { opacity: 1; filter: url(#softTextGlow); } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#canvasClip)">
+    <rect width="1280" height="640" fill="rgb(247,247,244)" />
+    <rect width="1280" height="640" fill="url(#pinkGlow)" />
+    <rect width="1280" height="640" fill="url(#violetGlow)" />
+    <rect width="1280" height="640" fill="url(#dottedBackground)" opacity="0.42" />
+    <rect x="70" y="62" width="1140" height="516" rx="28" ry="28" fill="none" stroke="rgb(205,209,204)" stroke-opacity="0.62" />
+    <rect x="86" y="78" width="1108" height="484" rx="20" ry="20" fill="none" stroke="rgb(171,96,155)" stroke-opacity="0.18" />
+    <g aria-hidden="true">
+      <g transform="translate(90 700)"><animateTransform attributeName="transform" type="translate" values="90 700;54 -90" dur="23s" begin="-2s" repeatCount="indefinite" /><text class="particle" style="--o:.22;--c:rgb(171,96,155);font-size:16px;">♥<animateTransform attributeName="transform" type="rotate" values="0;360" dur="18s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(180 710)"><animateTransform attributeName="transform" type="translate" values="180 710;212 -84" dur="29s" begin="-12s" repeatCount="indefinite" /><text class="particle" style="--o:.18;--c:rgb(198,160,255);font-size:20px;">♡<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="22s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(300 690)"><animateTransform attributeName="transform" type="translate" values="300 690;264 -80" dur="21s" begin="-6s" repeatCount="indefinite" /><text class="particle" style="--o:.28;--c:rgb(171,96,155);font-size:18px;">♥<animateTransform attributeName="transform" type="rotate" values="0;360" dur="19s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(430 720)"><animateTransform attributeName="transform" type="translate" values="430 720;476 -88" dur="27s" begin="-18s" repeatCount="indefinite" /><text class="particle" style="--o:.20;--c:rgb(198,160,255);font-size:14px;">♡<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="20s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(570 705)"><animateTransform attributeName="transform" type="translate" values="570 705;536 -86" dur="25s" begin="-8s" repeatCount="indefinite" /><text class="particle" style="--o:.24;--c:rgb(171,96,155);font-size:22px;">♥<animateTransform attributeName="transform" type="rotate" values="0;360" dur="24s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(710 700)"><animateTransform attributeName="transform" type="translate" values="710 700;752 -90" dur="30s" begin="-22s" repeatCount="indefinite" /><text class="particle" style="--o:.18;--c:rgb(198,160,255);font-size:16px;">♡<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="21s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(850 710)"><animateTransform attributeName="transform" type="translate" values="850 710;814 -88" dur="22s" begin="-14s" repeatCount="indefinite" /><text class="particle" style="--o:.26;--c:rgb(171,96,155);font-size:18px;">♥<animateTransform attributeName="transform" type="rotate" values="0;360" dur="17s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(990 700)"><animateTransform attributeName="transform" type="translate" values="990 700;1034 -82" dur="28s" begin="-10s" repeatCount="indefinite" /><text class="particle" style="--o:.20;--c:rgb(198,160,255);font-size:21px;">♡<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="26s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(1160 720)"><animateTransform attributeName="transform" type="translate" values="1160 720;1120 -88" dur="24s" begin="-4s" repeatCount="indefinite" /><text class="particle" style="--o:.24;--c:rgb(171,96,155);font-size:15px;">♥<animateTransform attributeName="transform" type="rotate" values="0;360" dur="23s" repeatCount="indefinite" /></text></g>
+    </g>
+    <g class="name-wrap" filter="url(#softTextGlow)"><text class="name" x="640" y="315">LOUIS NGUYEN</text></g>
+    <text class="subtitle" x="640" y="384">DOT.MOE</text>
+  </g>
+</svg>

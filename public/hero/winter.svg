@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">LOUIS NGUYEN winter theme banner</title>
+  <desc id="desc">A 1280 by 640 winter theme background with looping snowflake particles and centered LOUIS NGUYEN text.</desc>
+
+  <defs>
+    <clipPath id="canvasClip">
+      <rect width="1280" height="640" rx="36" ry="36" />
+    </clipPath>
+    <radialGradient id="iceGlow" cx="20%" cy="15%" r="70%">
+      <stop offset="0" stop-color="rgb(143,211,255)" stop-opacity="0.20" />
+      <stop offset="0.45" stop-color="rgb(21,40,57)" stop-opacity="0.20" />
+      <stop offset="1" stop-color="rgb(9,18,28)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="pineGlow" cx="78%" cy="78%" r="62%">
+      <stop offset="0" stop-color="rgb(155,215,189)" stop-opacity="0.16" />
+      <stop offset="0.48" stop-color="rgb(16,31,45)" stop-opacity="0.18" />
+      <stop offset="1" stop-color="rgb(9,18,28)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="redGlow" cx="92%" cy="18%" r="45%">
+      <stop offset="0" stop-color="rgb(233,132,132)" stop-opacity="0.10" />
+      <stop offset="1" stop-color="rgb(9,18,28)" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dottedBackground" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgb(238,247,255)" fill-opacity="0.18" />
+    </pattern>
+    <filter id="softTextGlow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" />
+      <feFlood flood-color="rgb(143,211,255)" flood-opacity="0.28" />
+      <feComposite in2="blur" operator="in" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <style>
+      .snow { font-family: Consolas, monospace; dominant-baseline: middle; text-anchor: middle; opacity: var(--o); fill: var(--c); }
+      .name { font-family: Consolas, monospace; font-size: 76px; font-weight: 700; letter-spacing: 8px; fill: rgb(238,247,255); dominant-baseline: middle; text-anchor: middle; }
+      .name-wrap { animation: glowPulse 3.8s ease-in-out infinite; transform-origin: 640px 315px; }
+      .subtitle { font-family: Consolas, monospace; font-size: 14px; letter-spacing: 5px; fill: rgb(155,215,189); fill-opacity: 0.72; dominant-baseline: middle; text-anchor: middle; }
+      @keyframes glowPulse { 0%, 100% { opacity: 0.86; filter: url(#softTextGlow); } 50% { opacity: 1; filter: url(#softTextGlow); } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#canvasClip)">
+    <rect width="1280" height="640" fill="rgb(9,18,28)" />
+    <rect width="1280" height="640" fill="url(#iceGlow)" />
+    <rect width="1280" height="640" fill="url(#pineGlow)" />
+    <rect width="1280" height="640" fill="url(#redGlow)" />
+    <rect width="1280" height="640" fill="url(#dottedBackground)" opacity="0.24" />
+    <rect x="70" y="62" width="1140" height="516" rx="28" ry="28" fill="none" stroke="rgb(41,68,91)" stroke-opacity="0.38" />
+    <rect x="86" y="78" width="1108" height="484" rx="20" ry="20" fill="none" stroke="rgb(143,211,255)" stroke-opacity="0.10" />
+
+    <g aria-hidden="true">
+    <g transform="translate(80 -40)"><animateTransform attributeName="transform" type="translate" values="80 -40;48 730" dur="34s" begin="-2s" repeatCount="indefinite" /><text class="snow" style="--o:.24;--c:rgb(238,247,255);font-size:13px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="18s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(145 -70)"><animateTransform attributeName="transform" type="translate" values="145 -70;176 730" dur="48s" begin="-18s" repeatCount="indefinite" /><text class="snow" style="--o:.34;--c:rgb(143,211,255);font-size:18px;">❅<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="22s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(220 -28)"><animateTransform attributeName="transform" type="translate" values="220 -28;204 724" dur="39s" begin="-11s" repeatCount="indefinite" /><text class="snow" style="--o:.28;--c:rgb(238,247,255);font-size:11px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="16s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(292 -88)"><animateTransform attributeName="transform" type="translate" values="292 -88;330 732" dur="52s" begin="-29s" repeatCount="indefinite" /><text class="snow" style="--o:.18;--c:rgb(143,211,255);font-size:16px;">❄<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="30s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(360 -54)"><animateTransform attributeName="transform" type="translate" values="360 -54;336 724" dur="31s" begin="-8s" repeatCount="indefinite" /><text class="snow" style="--o:.42;--c:rgb(238,247,255);font-size:14px;">❅<animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(430 -40)"><animateTransform attributeName="transform" type="translate" values="430 -40;462 734" dur="45s" begin="-32s" repeatCount="indefinite" /><text class="snow" style="--o:.22;--c:rgb(143,211,255);font-size:10px;">❄<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="24s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(506 -74)"><animateTransform attributeName="transform" type="translate" values="506 -74;488 728" dur="37s" begin="-15s" repeatCount="indefinite" /><text class="snow" style="--o:.36;--c:rgb(238,247,255);font-size:17px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="19s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(585 -20)"><animateTransform attributeName="transform" type="translate" values="585 -20;616 726" dur="50s" begin="-6s" repeatCount="indefinite" /><text class="snow" style="--o:.26;--c:rgb(143,211,255);font-size:12px;">❅<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="28s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(660 -66)"><animateTransform attributeName="transform" type="translate" values="660 -66;636 730" dur="42s" begin="-25s" repeatCount="indefinite" /><text class="snow" style="--o:.32;--c:rgb(238,247,255);font-size:15px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="21s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(738 -84)"><animateTransform attributeName="transform" type="translate" values="738 -84;770 724" dur="35s" begin="-13s" repeatCount="indefinite" /><text class="snow" style="--o:.20;--c:rgb(143,211,255);font-size:18px;">❅<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="25s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(810 -36)"><animateTransform attributeName="transform" type="translate" values="810 -36;790 736" dur="47s" begin="-37s" repeatCount="indefinite" /><text class="snow" style="--o:.44;--c:rgb(238,247,255);font-size:13px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="17s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(890 -58)"><animateTransform attributeName="transform" type="translate" values="890 -58;922 728" dur="40s" begin="-20s" repeatCount="indefinite" /><text class="snow" style="--o:.28;--c:rgb(143,211,255);font-size:16px;">❄<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="27s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(965 -92)"><animateTransform attributeName="transform" type="translate" values="965 -92;944 732" dur="53s" begin="-46s" repeatCount="indefinite" /><text class="snow" style="--o:.30;--c:rgb(238,247,255);font-size:11px;">❅<animateTransform attributeName="transform" type="rotate" values="0;360" dur="23s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(1040 -44)"><animateTransform attributeName="transform" type="translate" values="1040 -44;1074 724" dur="33s" begin="-4s" repeatCount="indefinite" /><text class="snow" style="--o:.38;--c:rgb(143,211,255);font-size:15px;">❄<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="18s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(1120 -78)"><animateTransform attributeName="transform" type="translate" values="1120 -78;1092 734" dur="44s" begin="-27s" repeatCount="indefinite" /><text class="snow" style="--o:.24;--c:rgb(238,247,255);font-size:18px;">❄<animateTransform attributeName="transform" type="rotate" values="0;360" dur="29s" repeatCount="indefinite" /></text></g>
+    <g transform="translate(1200 -32)"><animateTransform attributeName="transform" type="translate" values="1200 -32;1234 728" dur="49s" begin="-16s" repeatCount="indefinite" /><text class="snow" style="--o:.34;--c:rgb(143,211,255);font-size:12px;">❅<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="20s" repeatCount="indefinite" /></text></g>
+    </g>
+
+    <g class="name-wrap" filter="url(#softTextGlow)">
+      <text class="name" x="640" y="315">LOUIS NGUYEN</text>
+    </g>
+    <text class="subtitle" x="640" y="384">WINTER DEPLOY</text>
+  </g>
+</svg>

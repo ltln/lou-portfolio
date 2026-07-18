@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">LOUIS NGUYEN dark theme banner</title>
+  <desc id="desc">A 1280 by 640 dark theme background with centered LOUIS NGUYEN text.</desc>
+
+  <defs>
+    <clipPath id="canvasClip">
+      <rect width="1280" height="640" rx="36" ry="36" />
+    </clipPath>
+    <radialGradient id="accentGlow" cx="22%" cy="18%" r="68%">
+      <stop offset="0" stop-color="rgb(113,190,180)" stop-opacity="0.16" />
+      <stop offset="0.48" stop-color="rgb(20,24,27)" stop-opacity="0.18" />
+      <stop offset="1" stop-color="rgb(13,16,18)" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="surfaceGlow" cx="82%" cy="78%" r="62%">
+      <stop offset="0" stop-color="rgb(31,65,61)" stop-opacity="0.22" />
+      <stop offset="1" stop-color="rgb(13,16,18)" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dottedBackground" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgb(223,229,226)" fill-opacity="0.18" />
+    </pattern>
+    <filter id="softTextGlow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" />
+      <feFlood flood-color="rgb(113,190,180)" flood-opacity="0.24" />
+      <feComposite in2="blur" operator="in" result="glow" />
+      <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <style>
+      .firefly { opacity: var(--o); fill: rgb(113,190,180); filter: url(#softTextGlow); }
+      .name { font-family: Consolas, monospace; font-size: 76px; font-weight: 700; letter-spacing: 8px; fill: rgb(223,229,226); dominant-baseline: middle; text-anchor: middle; }
+      .name-wrap { animation: glowPulse 3.8s ease-in-out infinite; transform-origin: 640px 315px; }
+      @keyframes glowPulse { 0%, 100% { opacity: 0.86; filter: url(#softTextGlow); } 50% { opacity: 1; filter: url(#softTextGlow); } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#canvasClip)">
+    <rect width="1280" height="640" fill="rgb(13,16,18)" />
+    <rect width="1280" height="640" fill="url(#accentGlow)" />
+    <rect width="1280" height="640" fill="url(#surfaceGlow)" />
+    <rect width="1280" height="640" fill="url(#dottedBackground)" opacity="0.24" />
+    <rect x="70" y="62" width="1140" height="516" rx="28" ry="28" fill="none" stroke="rgb(55,63,67)" stroke-opacity="0.38" />
+    <rect x="86" y="78" width="1108" height="484" rx="20" ry="20" fill="none" stroke="rgb(113,190,180)" stroke-opacity="0.10" />
+    <g aria-hidden="true">
+      <circle class="firefly" cx="170" cy="160" r="2.2" style="--o:.34"><animate attributeName="cx" values="170;236;190;124;170" dur="28s" begin="-4s" repeatCount="indefinite" /><animate attributeName="cy" values="160;118;214;250;160" dur="28s" begin="-4s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.08;0.42;0.16;0.36;0.08" dur="7s" begin="-1s" repeatCount="indefinite" /></circle>
+      <circle class="firefly" cx="318" cy="430" r="1.8" style="--o:.28"><animate attributeName="cx" values="318;272;354;410;318" dur="34s" begin="-18s" repeatCount="indefinite" /><animate attributeName="cy" values="430;366;324;468;430" dur="34s" begin="-18s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.10;0.32;0.14;0.44;0.10" dur="8s" begin="-3s" repeatCount="indefinite" /></circle>
+      <circle class="firefly" cx="520" cy="180" r="2" style="--o:.30"><animate attributeName="cx" values="520;594;548;480;520" dur="31s" begin="-9s" repeatCount="indefinite" /><animate attributeName="cy" values="180;236;146;112;180" dur="31s" begin="-9s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.06;0.38;0.20;0.30;0.06" dur="6.5s" begin="-2s" repeatCount="indefinite" /></circle>
+      <circle class="firefly" cx="760" cy="455" r="2.4" style="--o:.26"><animate attributeName="cx" values="760;694;742;828;760" dur="38s" begin="-24s" repeatCount="indefinite" /><animate attributeName="cy" values="455;398;520;486;455" dur="38s" begin="-24s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.08;0.28;0.46;0.18;0.08" dur="9s" begin="-4s" repeatCount="indefinite" /></circle>
+      <circle class="firefly" cx="940" cy="210" r="1.7" style="--o:.32"><animate attributeName="cx" values="940;1006;966;902;940" dur="29s" begin="-13s" repeatCount="indefinite" /><animate attributeName="cy" values="210;162;268;298;210" dur="29s" begin="-13s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.10;0.40;0.12;0.34;0.10" dur="7.5s" begin="-5s" repeatCount="indefinite" /></circle>
+      <circle class="firefly" cx="1110" cy="420" r="2.1" style="--o:.24"><animate attributeName="cx" values="1110;1062;1154;1188;1110" dur="36s" begin="-20s" repeatCount="indefinite" /><animate attributeName="cy" values="420;482;392;348;420" dur="36s" begin="-20s" repeatCount="indefinite" /><animate attributeName="opacity" values="0.06;0.30;0.16;0.42;0.06" dur="8.5s" begin="-2s" repeatCount="indefinite" /></circle>
+    </g>
+    <g class="name-wrap" filter="url(#softTextGlow)">
+      <text class="name" x="640" y="315">LOUIS NGUYEN</text>
+    </g>
+  </g>
+</svg>

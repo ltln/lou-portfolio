@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">LOUIS NGUYEN Tet theme banner</title>
+  <desc id="desc">A 1280 by 640 Tet theme background with looping blossom particles and centered LOUIS NGUYEN text.</desc>
+
+  <defs>
+    <clipPath id="canvasClip"><rect width="1280" height="640" rx="36" ry="36" /></clipPath>
+    <radialGradient id="goldGlow" cx="18%" cy="18%" r="66%"><stop offset="0" stop-color="rgb(242,200,112)" stop-opacity="0.16" /><stop offset="1" stop-color="rgb(27,17,18)" stop-opacity="0" /></radialGradient>
+    <radialGradient id="redGlow" cx="86%" cy="80%" r="62%"><stop offset="0" stop-color="rgb(223,75,63)" stop-opacity="0.18" /><stop offset="1" stop-color="rgb(27,17,18)" stop-opacity="0" /></radialGradient>
+    <pattern id="dottedBackground" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgb(255,247,232)" fill-opacity="0.18" /></pattern>
+    <filter id="softTextGlow" x="-20%" y="-60%" width="140%" height="220%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur" /><feFlood flood-color="rgb(223,75,63)" flood-opacity="0.24" /><feComposite in2="blur" operator="in" result="glow" /><feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    <style>
+      .particle { font-family: Consolas, monospace; dominant-baseline: middle; text-anchor: middle; opacity: var(--o); fill: var(--c); }
+      .name { font-family: Consolas, monospace; font-size: 76px; font-weight: 700; letter-spacing: 8px; fill: rgb(255,247,232); dominant-baseline: middle; text-anchor: middle; }
+      .name-wrap { animation: glowPulse 3.4s ease-in-out infinite; transform-origin: 640px 315px; }
+      .subtitle { font-family: Consolas, monospace; font-size: 14px; letter-spacing: 5px; fill: rgb(242,200,112); fill-opacity: 0.78; dominant-baseline: middle; text-anchor: middle; }
+      @keyframes glowPulse { 0%, 100% { opacity: 0.86; filter: url(#softTextGlow); } 50% { opacity: 1; filter: url(#softTextGlow); } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#canvasClip)">
+    <rect width="1280" height="640" fill="rgb(27,17,18)" />
+    <rect width="1280" height="640" fill="url(#goldGlow)" />
+    <rect width="1280" height="640" fill="url(#redGlow)" />
+    <rect width="1280" height="640" fill="url(#dottedBackground)" opacity="0.22" />
+    <rect x="70" y="62" width="1140" height="516" rx="28" ry="28" fill="none" stroke="rgb(92,54,48)" stroke-opacity="0.52" />
+    <rect x="86" y="78" width="1108" height="484" rx="20" ry="20" fill="none" stroke="rgb(242,200,112)" stroke-opacity="0.14" />
+    <g aria-hidden="true">
+      <g transform="translate(100 700)"><animateTransform attributeName="transform" type="translate" values="100 700;150 -88" dur="24s" begin="-2s" repeatCount="indefinite" /><text class="particle" style="--o:.22;--c:rgb(242,200,112);font-size:18px;">✿<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="18s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(235 710)"><animateTransform attributeName="transform" type="translate" values="235 710;194 -84" dur="31s" begin="-14s" repeatCount="indefinite" /><text class="particle" style="--o:.20;--c:rgb(255,214,176);font-size:20px;">❀<animateTransform attributeName="transform" type="rotate" values="0;360" dur="22s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(370 700)"><animateTransform attributeName="transform" type="translate" values="370 700;420 -86" dur="27s" begin="-8s" repeatCount="indefinite" /><text class="particle" style="--o:.18;--c:rgb(242,200,112);font-size:15px;">✿<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="19s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(520 720)"><animateTransform attributeName="transform" type="translate" values="520 720;482 -90" dur="23s" begin="-18s" repeatCount="indefinite" /><text class="particle" style="--o:.26;--c:rgb(255,214,176);font-size:22px;">❀<animateTransform attributeName="transform" type="rotate" values="0;360" dur="26s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(675 705)"><animateTransform attributeName="transform" type="translate" values="675 705;726 -88" dur="29s" begin="-5s" repeatCount="indefinite" /><text class="particle" style="--o:.19;--c:rgb(242,200,112);font-size:17px;">✿<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="21s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(840 700)"><animateTransform attributeName="transform" type="translate" values="840 700;804 -84" dur="25s" begin="-12s" repeatCount="indefinite" /><text class="particle" style="--o:.24;--c:rgb(255,214,176);font-size:19px;">❀<animateTransform attributeName="transform" type="rotate" values="0;360" dur="24s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(1010 720)"><animateTransform attributeName="transform" type="translate" values="1010 720;1062 -92" dur="30s" begin="-20s" repeatCount="indefinite" /><text class="particle" style="--o:.20;--c:rgb(242,200,112);font-size:15px;">✿<animateTransform attributeName="transform" type="rotate" values="0;-360" dur="20s" repeatCount="indefinite" /></text></g>
+      <g transform="translate(1160 700)"><animateTransform attributeName="transform" type="translate" values="1160 700;1124 -86" dur="22s" begin="-7s" repeatCount="indefinite" /><text class="particle" style="--o:.23;--c:rgb(255,214,176);font-size:21px;">❀<animateTransform attributeName="transform" type="rotate" values="0;360" dur="23s" repeatCount="indefinite" /></text></g>
+    </g>
+    <g class="name-wrap" filter="url(#softTextGlow)"><text class="name" x="640" y="315">LOUIS NGUYEN</text></g>
+    <text class="subtitle" x="640" y="384">TET BUILD</text>
+  </g>
+</svg>
