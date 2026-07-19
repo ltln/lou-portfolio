@@ -48,7 +48,7 @@ export function ThemeMenu({
               key={theme.id}
               active={active === theme.id}
               label={theme.label}
-              description={theme.description}
+              description={active === theme.id ? theme.description : undefined}
               onSelect={() => onSelect(theme.id)}
             />
           ))}

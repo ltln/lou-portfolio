@@ -9,7 +9,16 @@ export const mdxOptions: NonNullable<MDXRemoteProps["options"]> = {
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [
       rehypeKatex,
-      [rehypePrettyCode, { theme: "github-dark", keepBackground: false }],
+      [
+        rehypePrettyCode,
+        {
+          theme: {
+            light: "github-light-high-contrast",
+            dark: "github-dark",
+          },
+          keepBackground: false,
+        },
+      ],
     ],
   },
 };

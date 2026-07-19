@@ -1,13 +1,20 @@
 import { activeTheme, enabledCustomThemes } from "../theme.config";
+import { serverSafeAvailableCustomThemes } from "../theme.availability";
 import { themeStorageKey } from "../theme.storage";
 
 export function ThemeScript() {
   const exposeAllThemes = process.env.NEXT_PUBLIC_THEME_ENABLE_ALL === "true";
   const preview =
     process.env.NODE_ENV !== "production" ? process.env.NEXT_PUBLIC_THEME_PREVIEW : undefined;
+  const previewTheme = enabledCustomThemes.find((theme) => theme.id === preview)?.id;
   const customThemes = exposeAllThemes
     ? enabledCustomThemes.map((theme) => theme.id)
-    : ["dotmoe", ...(preview === "winter" || preview === "tet" ? [preview] : [])];
+    : Array.from(
+        new Set([
+          ...serverSafeAvailableCustomThemes().map((theme) => theme.id),
+          ...(previewTheme ? [previewTheme] : []),
+        ]),
+      );
   const allowedThemes = ["system", "light", "dark", ...customThemes];
   const code = `
     (() => {

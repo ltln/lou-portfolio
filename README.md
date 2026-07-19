@@ -1,4 +1,4 @@
-# lou.moe
+﻿# lou.moe
 
 Personal engineering portfolio built with Next.js App Router, TypeScript, Tailwind CSS, Bun, locale-based routing, MDX content, and a configurable theme layer.
 
@@ -64,7 +64,7 @@ export const activeTheme = {
 };
 ```
 
-Set `customTheme` to `dotmoe`, `tet`, or `winter` to enable a site-owner controlled seasonal overlay. Visual tokens live in `src/styles/globals.css`.
+Set theme selection to an enabled custom theme such as `dotmoe`, `monsoon`, `lunar-new-year`, `winter`, `terminal-green`, or `midnight-blueprint` to enable a site-owner controlled overlay. Visual tokens live in `src/styles/globals.css`.
 
 ## Ambient effects
 

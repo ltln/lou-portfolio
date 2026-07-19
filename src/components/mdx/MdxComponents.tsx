@@ -90,7 +90,7 @@ export function createMdxComponents(locale?: Locale): MDXComponents {
         <div className="border-b border-border px-4 py-2 font-mono text-xs uppercase text-foreground/58">
           {title ?? language ?? "Code preview"}
         </div>
-        <pre className="m-0 overflow-x-auto p-4 font-mono text-sm leading-7 text-foreground">
+        <pre className="m-0 overflow-x-auto bg-surface/95 p-4 font-mono text-sm leading-7 text-foreground">
           <code>{children}</code>
         </pre>
       </WideContent>
@@ -185,7 +185,7 @@ export function createMdxComponents(locale?: Locale): MDXComponents {
     table: ({ children }) => <TableWrapper>{children}</TableWrapper>,
     pre: ({ children }) => (
       <WideContent className="my-8">
-        <pre className="overflow-x-auto border border-border bg-surface p-4 font-mono text-sm leading-7 text-foreground [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-inherit">
+        <pre className="overflow-x-auto border border-border bg-surface/95 p-4 font-mono text-sm leading-7 text-foreground shadow-[inset_3px_0_0_rgb(var(--accent)/0.38)] [&_code]:border-0 [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-inherit">
           {children}
         </pre>
       </WideContent>

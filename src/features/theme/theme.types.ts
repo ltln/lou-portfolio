@@ -1,5 +1,15 @@
 export type BaseThemeMode = "system" | "light" | "dark";
-export type CustomThemeId = "dotmoe" | "tet" | "winter";
+export type CustomThemeId =
+  | "dotmoe"
+  | "monsoon"
+  | "midautumn"
+  | "lunar-new-year"
+  | "aurora"
+  | "cherry-blossom"
+  | "halloween"
+  | "terminal-green"
+  | "midnight-blueprint"
+  | "winter";
 export type UserThemeSelection = BaseThemeMode | CustomThemeId;
 export type AppliedCustomThemeId = CustomThemeId | "none";
 
@@ -27,12 +37,22 @@ export interface ThemeParticleConfig {
   enabled: boolean;
   disableOnMobile?: boolean;
   respectReducedMotion: boolean;
-  preset?: "none" | "snow" | "fireflies" | "blossoms" | "apricot-blossoms" | "hearts" | "dots";
+  preset?:
+    | "none"
+    | "snow"
+    | "fireflies"
+    | "blossoms"
+    | "apricot-blossoms"
+    | "hearts"
+    | "dots"
+    | "rain"
+    | "cherry-leaves";
   options?: ISourceOptions;
 }
 
 export interface ThemeHeroConfig {
   image: string;
+  priority?: number;
   availability?: ThemeAvailability;
 }
 

@@ -66,19 +66,19 @@ availability: {
 }
 ```
 
-Winter Deploy uses the Gregorian range above and supports ranges crossing the year boundary. Táº¿t Build is manual for now:
+Winter Deploy uses the Gregorian range above and supports ranges crossing the year boundary. Lunar New Year is manual for now:
 
 ```ts
 availability: { type: "manual", enabled: false }
 ```
 
-Temporarily set `enabled: true` for Táº¿t testing. A future `vietnamese-lunar-range` adapter can be added in `theme.availability.ts` without changing the selector UI.
+Temporarily set `availability.enabled: true` for Lunar New Year testing. A future `vietnamese-lunar-range` adapter can be added in `theme.availability.ts` without changing the selector UI.
 
 Development preview override:
 
 ```text
 NEXT_PUBLIC_THEME_PREVIEW=winter
-NEXT_PUBLIC_THEME_PREVIEW=tet
+NEXT_PUBLIC_THEME_PREVIEW=lunar-new-year
 ```
 
 Preview is ignored in production.
@@ -89,7 +89,7 @@ To expose every `enabled: true` custom theme even in production, set:
 NEXT_PUBLIC_THEME_ENABLE_ALL=true
 ```
 
-This affects both the selector availability check and the early no-flash theme bootstrap script, so a persisted seasonal theme such as `tet` can be restored immediately on first paint.
+This affects both the selector availability check and the early no-flash theme bootstrap script, so a persisted seasonal theme such as `lunar-new-year` can be restored immediately on first paint.
 
 ## Tokens
 
@@ -106,6 +106,7 @@ Theme-specific hero SVGs are optional and configured on the theme definition:
 ```ts
 hero: {
   image: "hero/winter.svg",
+  priority: 50,
   availability: {
     type: "gregorian-range",
     timezone: "Asia/Ho_Chi_Minh",
@@ -115,7 +116,8 @@ hero: {
 }
 ```
 
-`image` is relative to `public/`. If `hero.availability` is omitted, `/api/hero` uses the theme `availability`. The API defaults to `public/hero/dark.svg`; query overrides such as `/api/hero?theme=winter` return an enabled theme's configured hero image.
+`image` is relative to `public/`. If `hero.availability` is omitted, `/api/hero` uses the theme `availability`. The API defaults to `public/hero/dark.svg`; query overrides such as `/api/hero?theme=winter` return an enabled theme's configured hero image. `/api/hero?theme=random` returns a random enabled theme with a configured hero image and sends `Cache-Control: no-store`.
+When multiple hero windows are active, the highest `hero.priority` wins; omitted priority is `0`.
 
 ## Particles
 

@@ -16,18 +16,32 @@ const queryThemeAliases: Record<string, HeroTheme> = {
   moe: "dotmoe",
   dotmoe: "dotmoe",
   "dot.moe": "dotmoe",
-  tet: "tet",
+  monsoon: "monsoon",
+  midautumn: "midautumn",
+  tet: "lunar-new-year",
+  lunar: "lunar-new-year",
+  "lunar-new-year": "lunar-new-year",
+  aurora: "aurora",
+  sakura: "cherry-blossom",
+  "cherry-blossom": "cherry-blossom",
+  halloween: "halloween",
+  "terminal-green": "terminal-green",
+  terminal: "terminal-green",
+  blueprint: "midnight-blueprint",
+  "midnight-blueprint": "midnight-blueprint",
   winter: "winter",
 };
 
 export async function GET(request: NextRequest) {
-  const theme = resolveHeroTheme(request.nextUrl.searchParams.get("theme"));
+  const queryTheme = request.nextUrl.searchParams.get("theme");
+  const random = isRandomQueryTheme(queryTheme);
+  const theme = random ? randomHeroTheme() : resolveHeroTheme(queryTheme);
   const svg = await fs.readFile(path.join(process.cwd(), "public", heroImageFor(theme)), "utf8");
 
   return new NextResponse(svg, {
     headers: {
       "Content-Type": "image/svg+xml; charset=utf-8",
-      "Cache-Control": cacheControlHeader(),
+      "Cache-Control": cacheControlHeader(random),
       "X-Hero-Theme": theme,
     },
   });
@@ -37,7 +51,9 @@ function resolveHeroTheme(queryTheme: string | null): HeroTheme {
   const requested = normalizeQueryTheme(queryTheme);
   if (requested && isHeroThemeEnabled(requested)) return requested;
 
-  const activeTheme = customThemeDefinitions.find((theme) => theme.enabled && isHeroActive(theme));
+  const activeTheme = customThemeDefinitions
+    .filter((theme) => theme.enabled && isHeroActive(theme))
+    .sort((left, right) => heroPriority(right) - heroPriority(left))[0];
 
   return activeTheme?.id ?? defaultTheme;
 }
@@ -45,6 +61,18 @@ function resolveHeroTheme(queryTheme: string | null): HeroTheme {
 function normalizeQueryTheme(theme: string | null): HeroTheme | null {
   if (!theme) return null;
   return queryThemeAliases[theme.trim().toLowerCase()] ?? null;
+}
+
+function isRandomQueryTheme(theme: string | null) {
+  return theme?.trim().toLowerCase() === "random";
+}
+
+function randomHeroTheme(): HeroTheme {
+  const themes = customThemeDefinitions
+    .filter((theme) => theme.enabled && theme.hero?.image)
+    .map((theme) => theme.id);
+  if (!themes.length) return defaultTheme;
+  return themes[Math.floor(Math.random() * themes.length)] ?? defaultTheme;
 }
 
 function isHeroThemeEnabled(theme: HeroTheme) {
@@ -59,6 +87,10 @@ function isHeroActive(theme: CustomThemeDefinition) {
   return isAvailabilityActive(availability);
 }
 
+function heroPriority(theme: CustomThemeDefinition) {
+  return theme.hero?.priority ?? 0;
+}
+
 function heroImageFor(theme: HeroTheme) {
   if (theme === "dark") return defaultHeroImage;
   return themeDefinition(theme)?.hero?.image ?? defaultHeroImage;
@@ -68,7 +100,8 @@ function themeDefinition(theme: CustomThemeId) {
   return customThemeDefinitions.find((definition) => definition.id === theme);
 }
 
-function cacheControlHeader() {
+function cacheControlHeader(noStore = false) {
+  if (noStore) return "no-store";
   const seconds = cacheSeconds();
   return `public, max-age=${seconds}, s-maxage=${seconds}, stale-while-revalidate=${seconds}`;
 }

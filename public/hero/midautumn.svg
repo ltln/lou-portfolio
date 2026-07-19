@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">LOUIS NGUYEN Mid-Autumn theme banner</title>
+  <desc id="desc">A Mid-Autumn banner with moonlit indigo, lantern gold, fireflies, and centered LOUIS NGUYEN text.</desc>
+  <defs>
+    <clipPath id="clip"><rect width="1280" height="640" rx="36" ry="36" /></clipPath>
+    <radialGradient id="moon" cx="73%" cy="24%" r="28%"><stop offset="0" stop-color="rgb(255,243,214)" stop-opacity="0.38"/><stop offset="0.38" stop-color="rgb(238,177,76)" stop-opacity="0.16"/><stop offset="1" stop-color="rgb(18,20,38)" stop-opacity="0"/></radialGradient>
+    <radialGradient id="lantern" cx="18%" cy="78%" r="56%"><stop offset="0" stop-color="rgb(218,92,84)" stop-opacity="0.18"/><stop offset="1" stop-color="rgb(18,20,38)" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgb(255,243,214)" fill-opacity="0.18"/></pattern>
+    <filter id="glow" x="-20%" y="-70%" width="140%" height="240%"><feGaussianBlur in="SourceAlpha" stdDeviation="5" result="b"/><feFlood flood-color="rgb(238,177,76)" flood-opacity="0.32"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <style>.name{font-family:Consolas,monospace;font-size:76px;font-weight:700;letter-spacing:8px;fill:rgb(255,243,214);text-anchor:middle;dominant-baseline:middle}.sub{font-family:Consolas,monospace;font-size:14px;letter-spacing:5px;fill:rgb(238,177,76);fill-opacity:.8;text-anchor:middle;dominant-baseline:middle}.pulse{animation:p 3.6s ease-in-out infinite}.bug{fill:rgb(255,213,122);opacity:var(--o);filter:drop-shadow(0 0 8px rgb(238 177 76 / .55))}@keyframes p{0%,100%{opacity:.86}50%{opacity:1}}</style>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1280" height="640" fill="rgb(18,20,38)"/><rect width="1280" height="640" fill="url(#moon)"/><rect width="1280" height="640" fill="url(#lantern)"/><rect width="1280" height="640" fill="url(#dots)" opacity=".20"/>
+    <rect x="70" y="62" width="1140" height="516" rx="28" fill="none" stroke="rgb(87,78,105)" stroke-opacity=".48"/><rect x="86" y="78" width="1108" height="484" rx="20" fill="none" stroke="rgb(238,177,76)" stroke-opacity=".14"/>
+    <g aria-hidden="true">
+      <circle cx="930" cy="155" r="70" fill="rgb(255,243,214)" opacity=".10"/>
+      <path d="M188 122h42l10 58-31 28-31-28zM1045 392h48l12 66-36 31-36-31z" fill="rgb(238,177,76)" opacity=".18"/>
+      <g><animateTransform attributeName="transform" type="translate" values="0 0;34 -22;0 0" dur="9s" repeatCount="indefinite"/><circle class="bug" style="--o:.62" cx="210" cy="410" r="2.6"/><circle class="bug" style="--o:.44" cx="330" cy="250" r="2.1"/><circle class="bug" style="--o:.58" cx="510" cy="448" r="2.4"/><circle class="bug" style="--o:.50" cx="780" cy="210" r="2.2"/><circle class="bug" style="--o:.66" cx="1030" cy="292" r="2.8"/></g>
+      <g><animateTransform attributeName="transform" type="translate" values="0 0;-28 18;0 0" dur="11s" repeatCount="indefinite"/><circle class="bug" style="--o:.52" cx="255" cy="178" r="2.2"/><circle class="bug" style="--o:.64" cx="610" cy="158" r="2.6"/><circle class="bug" style="--o:.48" cx="885" cy="430" r="2.1"/><circle class="bug" style="--o:.58" cx="1120" cy="170" r="2.4"/></g>
+    </g>
+    <g class="pulse" filter="url(#glow)"><text class="name" x="640" y="315">LOUIS NGUYEN</text></g><text class="sub" x="640" y="384">MID-AUTUMN</text>
+  </g>
+</svg>

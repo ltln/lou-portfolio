@@ -85,7 +85,7 @@ can return it when the theme is enabled, and add/update the optional hero config
 theme definition. Validate the SVG as XML and run the narrowest relevant checks.
 ```
 
-- Existing examples: `public/hero/dark.svg`, `public/hero/moe.svg`, `public/hero/tet.svg`, `public/hero/winter.svg`.
+- Existing examples: `public/hero/dark.svg`, `public/hero/moe.svg`, `public/hero/lunar-new-year.svg`, `public/hero/winter.svg`.
 - Prefer `siteConfig.author` from `src/config/site.config.ts` over hardcoded banner text.
 - Keep hero theme ids aligned with `CustomThemeId`, theme `hero.image`, and `/api/hero` aliases.
 

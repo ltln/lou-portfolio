@@ -2,6 +2,18 @@ import { customThemeDefinitions } from "./theme.config";
 import type { CustomThemeId, ThemeAvailability } from "./theme.types";
 
 const alwaysAvailable: CustomThemeId[] = ["dotmoe"];
+const themeDisplayOrder: CustomThemeId[] = [
+  "dotmoe",
+  "terminal-green",
+  "midnight-blueprint",
+  "monsoon",
+  "midautumn",
+  "lunar-new-year",
+  "aurora",
+  "cherry-blossom",
+  "halloween",
+  "winter",
+];
 
 function exposesAllEnabledThemes() {
   const appEnv = process.env.NEXT_PUBLIC_APP_ENV ?? process.env.NEXT_PUBLIC_VERCEL_ENV;
@@ -45,32 +57,44 @@ export function isAvailabilityActive(availability: ThemeAvailability, now = new 
 }
 
 export function availableCustomThemes(now = new Date()) {
-  if (exposesAllEnabledThemes()) return customThemeDefinitions.filter((theme) => theme.enabled);
+  if (exposesAllEnabledThemes())
+    return sortThemes(customThemeDefinitions.filter((theme) => theme.enabled));
   const preview =
     process.env.NODE_ENV !== "production" ? process.env.NEXT_PUBLIC_THEME_PREVIEW : undefined;
-  return customThemeDefinitions.filter(
-    (theme) =>
-      theme.enabled &&
-      (alwaysAvailable.includes(theme.id) ||
-        isAvailabilityActive(theme.availability, now) ||
-        preview === theme.id),
+  return sortThemes(
+    customThemeDefinitions.filter(
+      (theme) =>
+        theme.enabled &&
+        (alwaysAvailable.includes(theme.id) ||
+          isAvailabilityActive(theme.availability, now) ||
+          preview === theme.id),
+    ),
   );
 }
 
 export function serverSafeAvailableCustomThemes() {
-  if (exposesAllEnabledThemes()) return customThemeDefinitions.filter((theme) => theme.enabled);
+  if (exposesAllEnabledThemes())
+    return sortThemes(customThemeDefinitions.filter((theme) => theme.enabled));
   const preview =
     process.env.NODE_ENV !== "production" ? process.env.NEXT_PUBLIC_THEME_PREVIEW : undefined;
-  return customThemeDefinitions.filter(
-    (theme) =>
-      theme.enabled &&
-      (alwaysAvailable.includes(theme.id) ||
-        theme.availability.type === "always" ||
-        (theme.availability.type === "manual" && theme.availability.enabled) ||
-        preview === theme.id),
+  return sortThemes(
+    customThemeDefinitions.filter(
+      (theme) =>
+        theme.enabled &&
+        (alwaysAvailable.includes(theme.id) ||
+          theme.availability.type === "always" ||
+          (theme.availability.type === "manual" && theme.availability.enabled) ||
+          preview === theme.id),
+    ),
   );
 }
 
 export function isThemeAvailable(id: CustomThemeId, now = new Date()) {
   return availableCustomThemes(now).some((theme) => theme.id === id);
+}
+
+function sortThemes(themes: typeof customThemeDefinitions) {
+  return [...themes].sort(
+    (left, right) => themeDisplayOrder.indexOf(left.id) - themeDisplayOrder.indexOf(right.id),
+  );
 }

@@ -167,6 +167,44 @@ button:focus-visible {
     linear-gradient(90deg, rgb(var(--border) / 0.55) 1px, transparent 1px);
   background-size: 12px 12px;
 }
+[data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-light, rgb(var(--foreground))) !important;
+  opacity: 1 !important;
+}
+html[data-theme-mode="light"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="dotmoe"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="cherry-blossom"] [data-rehype-pretty-code-figure] code span {
+  color: color-mix(
+    in srgb,
+    var(--shiki-light, rgb(var(--foreground))) 88%,
+    rgb(var(--surface-muted)) 12%
+  ) !important;
+}
+html[data-theme-mode="dark"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="monsoon"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="midautumn"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="lunar-new-year"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="aurora"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="halloween"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="terminal-green"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="midnight-blueprint"] [data-rehype-pretty-code-figure] code span,
+html[data-custom-theme="winter"] [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark) !important;
+}
+@media (prefers-color-scheme: dark) {
+  html[data-theme-mode="system"][data-custom-theme="none"]
+    [data-rehype-pretty-code-figure]
+    code
+    span {
+    color: var(--shiki-dark) !important;
+  }
+}
+html[data-theme-mode="light"] [data-rehype-pretty-code-figure] pre,
+html[data-custom-theme="dotmoe"] [data-rehype-pretty-code-figure] pre,
+html[data-custom-theme="cherry-blossom"] [data-rehype-pretty-code-figure] pre {
+  background: rgb(var(--surface-muted) / 0.5);
+  border-color: rgb(var(--border));
+}
 .content-shell {
   width: min(100%, 1200px);
   margin-inline: auto;

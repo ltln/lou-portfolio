@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
-  <title id="title">LOUIS NGUYEN Tet theme banner</title>
-  <desc id="desc">A 1280 by 640 Tet theme background with looping blossom particles and centered LOUIS NGUYEN text.</desc>
+  <title id="title">LOUIS NGUYEN Lunar New Year theme banner</title>
+  <desc id="desc">A 1280 by 640 Lunar New Year theme background with looping blossom particles and centered LOUIS NGUYEN text.</desc>
 
   <defs>
     <clipPath id="canvasClip"><rect width="1280" height="640" rx="36" ry="36" /></clipPath>
@@ -35,6 +35,6 @@
       <g transform="translate(1160 700)"><animateTransform attributeName="transform" type="translate" values="1160 700;1124 -86" dur="22s" begin="-7s" repeatCount="indefinite" /><text class="particle" style="--o:.23;--c:rgb(255,214,176);font-size:21px;">❀<animateTransform attributeName="transform" type="rotate" values="0;360" dur="23s" repeatCount="indefinite" /></text></g>
     </g>
     <g class="name-wrap" filter="url(#softTextGlow)"><text class="name" x="640" y="315">LOUIS NGUYEN</text></g>
-    <text class="subtitle" x="640" y="384">TET BUILD</text>
+    <text class="subtitle" x="640" y="384">LUNAR NEW YEAR</text>
   </g>
 </svg>

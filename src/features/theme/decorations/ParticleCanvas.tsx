@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import Particles from "@tsparticles/react";
@@ -7,7 +7,7 @@ import { loadSlim } from "@tsparticles/slim";
 import type { ISourceOptions } from "@tsparticles/engine";
 import type { ThemeParticleConfig } from "../theme.types";
 
-type CssPreset = "hearts" | "apricot-blossoms" | "snow";
+type CssPreset = "hearts" | "apricot-blossoms" | "snow" | "rain" | "cherry-leaves";
 
 interface ParticleSpec {
   left: number;
@@ -21,7 +21,13 @@ interface ParticleSpec {
   color: string;
 }
 
-const cssPresetSet = new Set<ThemeParticleConfig["preset"]>(["hearts", "apricot-blossoms", "snow"]);
+const cssPresetSet = new Set<ThemeParticleConfig["preset"]>([
+  "hearts",
+  "apricot-blossoms",
+  "snow",
+  "rain",
+  "cherry-leaves",
+]);
 
 function mergeOptions(base: ISourceOptions, override?: ISourceOptions): ISourceOptions {
   if (!override) return base;
@@ -126,17 +132,50 @@ function CssParticleLayer({ preset, mobile }: { preset: CssPreset; mobile: boole
             } as React.CSSProperties
           }
         >
-          {spec.char}
+          {preset === "rain" ? (
+            <RainDrop />
+          ) : preset === "cherry-leaves" ? (
+            <CherryPetal />
+          ) : (
+            spec.char
+          )}
         </span>
       ))}
     </div>
   );
 }
 
+function RainDrop() {
+  return <i className="theme-rain-drop" />;
+}
+
+function CherryPetal() {
+  return (
+    <svg viewBox="0 0 36 32" width="1em" height="1em" aria-hidden="true">
+      <path
+        d="M2.8 24.2c.1-5.7 6.5-8.7 11.2-14.6C19.3 2.9 26.1-.1 31.4 3.4c4.3 2.9 1.8 8.6 1.5 12.6-.3 3.2 3.1 4.7.7 8.1-3.1 4.4-11.4 7.2-18 5.6-4.6-1.1-7.7-4.2-12.8-5.5Z"
+        fill="currentColor"
+      />
+      <path
+        d="M5 23.8c7.9-1.8 14.3-5.8 22.9-16.4"
+        fill="none"
+        stroke="rgb(255 255 255 / 0.52)"
+        strokeLinecap="round"
+        strokeWidth="1.4"
+      />
+      <path
+        d="M4.2 23.9c5.2-1 11.6.2 17 4.1-6.8 2.6-13.4-.5-17-4.1Z"
+        fill="rgb(236 105 142 / 0.36)"
+      />
+      <ellipse cx="24.8" cy="10.7" rx="5.6" ry="4" fill="rgb(255 255 255 / 0.26)" />
+    </svg>
+  );
+}
+
 function createParticleSpecs(preset: CssPreset, mobile: boolean): ParticleSpec[] {
   const count = mobile ? particleCount(preset).mobile : particleCount(preset).desktop;
   return Array.from({ length: count }, (_, index) => {
-    const seed = index + (preset === "hearts" ? 11 : preset === "apricot-blossoms" ? 29 : 47);
+    const seed = index + particleSeedOffset(preset);
     const left = pseudo(seed, 13, 94);
     const duration = particleDuration(preset, seed);
     const delay = -pseudo(seed + 7, 0, duration);
@@ -144,36 +183,76 @@ function createParticleSpecs(preset: CssPreset, mobile: boolean): ParticleSpec[]
       left,
       delay,
       duration,
-      size: pseudo(seed + 5, preset === "snow" ? 8 : 10, preset === "snow" ? 18 : 22),
-      drift: pseudo(seed + 9, preset === "snow" ? -32 : -54, preset === "snow" ? 32 : 54),
+      size: particleSize(preset, seed),
+      drift: particleDrift(preset, seed),
       spin: pseudo(seed + 15, -420, 420),
-      opacity: pseudo(seed + 4, preset === "snow" ? 18 : 16, preset === "snow" ? 46 : 34) / 100,
+      opacity: particleOpacity(preset, seed),
       char: particleChar(preset, seed),
       color: particleColor(preset, seed),
     };
   });
 }
 
+function particleSeedOffset(preset: CssPreset) {
+  if (preset === "hearts") return 11;
+  if (preset === "apricot-blossoms") return 29;
+  if (preset === "rain") return 61;
+  if (preset === "cherry-leaves") return 73;
+  return 47;
+}
+
+function particleSize(preset: CssPreset, seed: number) {
+  if (preset === "rain") return pseudo(seed + 5, 36, 76);
+  if (preset === "snow") return pseudo(seed + 5, 8, 18);
+  if (preset === "cherry-leaves") return pseudo(seed + 5, 18, 34);
+  return pseudo(seed + 5, 10, 22);
+}
+
+function particleDrift(preset: CssPreset, seed: number) {
+  if (preset === "rain") return pseudo(seed + 9, -190, -72);
+  if (preset === "snow") return pseudo(seed + 9, -32, 32);
+  return pseudo(seed + 9, -54, 54);
+}
+
+function particleOpacity(preset: CssPreset, seed: number) {
+  if (preset === "rain") return pseudo(seed + 4, 18, 46) / 100;
+  if (preset === "snow") return pseudo(seed + 4, 18, 46) / 100;
+  if (preset === "cherry-leaves") return pseudo(seed + 4, 42, 74) / 100;
+  return pseudo(seed + 4, 16, 34) / 100;
+}
+
 function particleDuration(preset: CssPreset, seed: number) {
+  if (preset === "rain") return pseudo(seed + 3, 2, 5);
   if (preset === "snow") return pseudo(seed + 3, 28, 52);
+  if (preset === "cherry-leaves") return pseudo(seed + 3, 18, 34);
   if (preset === "apricot-blossoms") return pseudo(seed + 3, 18, 34);
   return pseudo(seed + 3, 16, 30);
 }
 
 function particleCount(preset: CssPreset) {
+  if (preset === "rain") return { desktop: 56, mobile: 28 };
   if (preset === "snow") return { desktop: 42, mobile: 22 };
+  if (preset === "cherry-leaves") return { desktop: 28, mobile: 14 };
   if (preset === "apricot-blossoms") return { desktop: 24, mobile: 12 };
   return { desktop: 20, mobile: 10 };
 }
 
 function particleChar(preset: CssPreset, seed: number) {
   if (preset === "hearts") return seed % 3 === 0 ? "\u2661" : "\u2665";
+  if (preset === "rain") return "";
+  if (preset === "cherry-leaves") return "";
   if (preset === "apricot-blossoms") return seed % 2 === 0 ? "\u273f" : "\u2740";
   return seed % 3 === 0 ? "\u2744" : "\u2745";
 }
 
 function particleColor(preset: CssPreset, seed: number) {
   if (preset === "hearts") return seed % 2 === 0 ? "rgb(171 96 155)" : "rgb(198 160 255)";
+  if (preset === "rain") return seed % 3 === 0 ? "rgb(93 207 218)" : "rgb(224 242 239)";
+  if (preset === "cherry-leaves") {
+    if (seed % 4 === 0) return "rgb(255 213 224)";
+    if (seed % 3 === 0) return "rgb(248 157 183)";
+    return "rgb(255 190 209)";
+  }
   if (preset === "apricot-blossoms")
     return seed % 3 === 0 ? "rgb(242 200 112)" : "rgb(255 214 176)";
   return seed % 3 === 0 ? "rgb(143 211 255)" : "rgb(238 247 255)";
@@ -213,6 +292,32 @@ const cssParticleStyles = `
     bottom: auto;
     animation-name: theme-snow-fall;
   }
+  .theme-particle-rain {
+    top: -18vh;
+    bottom: auto;
+    animation-name: theme-rain-fall;
+    filter: drop-shadow(0 0 5px rgb(93 207 218 / 0.24));
+  }
+  .theme-rain-drop {
+    display: block;
+    width: 1px;
+    height: var(--particle-size);
+    border-radius: 999px;
+    transform: rotate(15deg);
+    transform-origin: center top;
+    background: linear-gradient(to bottom, transparent, currentColor 18%, currentColor 78%, transparent);
+    box-shadow: 0 0 8px currentColor;
+  }
+  .theme-particle-cherry-leaves {
+    top: -12vh;
+    bottom: auto;
+    animation-name: theme-cherry-leaf-float;
+    filter: drop-shadow(0 0 7px rgb(190 93 145 / 0.2));
+  }
+  .theme-particle-cherry-leaves svg {
+    display: block;
+    transform: scaleX(1.18) rotate(-10deg);
+  }
   @keyframes theme-heart-float {
     0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.82); }
     12% { opacity: var(--particle-opacity); }
@@ -236,6 +341,20 @@ const cssParticleStyles = `
     68% { transform: translate3d(calc(var(--particle-drift) * 0.44), 76vh, 0) rotate(calc(var(--particle-spin) * 0.68)); }
     90% { opacity: var(--particle-opacity); }
     100% { opacity: 0; transform: translate3d(var(--particle-drift), 114vh, 0) rotate(var(--particle-spin)); }
+  }
+  @keyframes theme-rain-fall {
+    0% { opacity: 0; transform: translate3d(0, 0, 0); }
+    5% { opacity: var(--particle-opacity); }
+    82% { opacity: var(--particle-opacity); }
+    100% { opacity: 0; transform: translate3d(var(--particle-drift), 122vh, 0); }
+  }
+  @keyframes theme-cherry-leaf-float {
+    0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg) scale(0.82); }
+    14% { opacity: var(--particle-opacity); }
+    40% { transform: translate3d(calc(var(--particle-drift) * 0.44), 38vh, 0) rotate(calc(var(--particle-spin) * -0.42)) scale(1.02); }
+    68% { transform: translate3d(calc(var(--particle-drift) * -0.34), 72vh, 0) rotate(calc(var(--particle-spin) * 0.7)) scale(0.92); }
+    84% { opacity: var(--particle-opacity); }
+    100% { opacity: 0; transform: translate3d(var(--particle-drift), 116vh, 0) rotate(var(--particle-spin)) scale(0.78); }
   }
   @media (prefers-reduced-motion: reduce) {
     .theme-particle { animation: none; opacity: 0; }
